@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Typography Size Queries
+   ========================================================================== */
+body {
+    @include tablet {
+      font-size: 16px;
+ 
+    }
+}
+
+
+h1, .h1 {
+  line-height: 1em;
+  @include tiny {
+    font-size: 2.2em;
+  }
+  font-size: 2.3em;
+  @include tablet {
+    font-size: 2.6em;
+  }
+  @include desktop {
+    font-size: 2.8em;
+  }
+  @include widescreen {
+    font-size: 2.8em;
+  }
+  @include fullhd {
+    font-size: 3.1em;
+  }
+}
+
+h2, .h2 {
+  @include tiny {
+    font-size: 2em;
+  }
+  font-size: 2.1em;
+  @include tablet {
+    font-size: 2.2em;
+  }
+  @include desktop {
+    font-size: 2.3em;
+  }
+  @include widescreen {
+    font-size: 2.4em;
+  }
+}
+
+h3, .h3 {
+  @include tiny {
+    font-size: 1.5em;
+  }
+  font-size: 1.6em;
+  @include tablet {
+    font-size: 1.7em;
+  }
+  @include desktop {
+    font-size: 1.8em;
+  }
+  @include widescreen {
+    font-size: 1.9em;
+  }
+}
+
+h4, .h4 {
+  @include tiny {
+    font-size: 1.2em;
+  }
+  font-size: 1.3em;
+  @include tablet {
+    font-size: 1.4em;
+  }
+  @include desktop {
+    font-size: 1.5em;
+  }
+  @include widescreen {
+    font-size: 1.6em;
+  }
+}
+
+h5, .h5 {
+  @include tiny {
+    font-size: 1em;
+  }
+  font-size: 1.1em;
+  @include tablet {
+    font-size: 1.1em;
+  }
+  @include desktop {
+    font-size: 1.2em;
+  }
+  @include widescreen {
+    font-size: 1.2em;
+  }
+}
+
+h6, .h6 {
+  @include tiny {
+    font-size: .9em;
+  }
+  font-size: .9em;
+  @include tablet {
+    font-size: .9em;
+  }
+  @include desktop {
+    font-size: 1em;
+  }
+  @include widescreen {
+    font-size: 1em;
+  }
+}

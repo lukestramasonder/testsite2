@@ -1,0 +1,20 @@
+body.login {
+  background: #222; }
+  body.login #login {
+    width: 440px;
+    max-width: 95%; }
+    body.login #login form {
+      background: transparent;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+      body.login #login form .input, body.login #login form input[type=checkbox], body.login #login form input[type=text] {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid #333; }
+      body.login #login form input[type=text], body.login #login form input[type=password] {
+        height: 3rem;
+        color: #efefef; }
+      body.login #login form .button.button-large {
+        height: 3rem;
+        line-height: 28px;
+        padding: 0 34px 2px;
+        text-transform: uppercase; }

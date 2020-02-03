@@ -1,0 +1,283 @@
+/* ==========================================================================
+Typography
+========================================================================== */
+
+@import '_variables';
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: $font2;
+  font-weight: normal;
+  font-size: 14px;
+  color: $textColor;
+  line-height: 1.5em;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+strong {
+  font-weight: bold;
+  color: inherit;
+}
+
+.lead {
+  font-size: 1.2em;
+  margin: 1rem 0 1rem;
+  line-height: 1.2em;
+}
+
+.header {
+  p {
+    margin: 0;
+  }
+}
+
+.serif {
+  font-family: $font1!important;
+  .elementor-heading-title {
+    font-family: $font1!important;
+  }
+}
+
+.sans {
+  font-family: $font2!important;
+  .elementor-heading-title {
+    font-family: $font2!important;
+  }
+  .elementor-flip-box__layer__title {
+    font-family: $font2!important;
+  }
+}
+
+.pc {
+  color: $pc;
+}
+.sc {
+  color: $sc;
+}
+.tc {
+  color: $tc;
+}
+.qc {
+  color: $qc;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font1;
+  color: $pc;
+  text-transform: none;
+  line-height: 1.2em;
+  font-weight: bold;
+  a, a:link, a:visited{
+    color: $sc;
+    &:hover {
+      color: $pc;
+    }
+  }
+}
+
+
+
+
+
+
+p {
+  margin: 1rem 0 1rem;
+}
+
+
+
+blockquote {
+  margin: 20px 0;
+  padding-left: 1.5rem;
+  border-left: 5px solid $pc;
+}
+
+
+a, a:link , a:visited {
+  color: $sc;
+}
+
+body, .mce-content-body {
+  a.arw, a.arw[data-mce-selected] {
+    font-family: $font1;
+    padding-right: 14px;
+    position: relative;
+    color: $pc;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .8em;
+    letter-spacing: .02em;
+    &::after {
+      display: inline-block;
+      content: "›";
+      margin-left: 8px;
+      color: $pc;
+      background: $sc;
+      width: 18px;
+      height: 18px;
+      line-height: 12px;
+      text-align: center;
+      padding: 0px 2px 0;
+      border-radius: 100%;
+      font-size: 1.5em;
+      transition: transform .3s ease-in-out;
+    }
+                        
+    &.btn {
+
+    }
+    vertical-align: middle;
+
+    &:hover {
+      text-decoration: underline;
+      &::after {
+        transform: translateX(6px);
+      }
+    }
+  }
+}
+
+
+
+body, .mce-content-body {
+  a.download, a.download[data-mce-selected] , input.download {
+    text-decoration: none;
+    font-family: $font1;
+    padding-left: 22px;
+    position: relative;
+    color: $pc;
+    background-color: transparent;
+    border: 0 none;
+    text-transform: uppercase;
+
+    &::before {
+      font-size: 1.25em;
+      position: absolute;
+      left: 0;
+      top: -4px;
+      display: inline-block;
+      font-family: "Ionicons";
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      text-rendering: auto;
+      line-height: 1;
+      content: "\f41f";
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+
+  }
+
+}
+
+a:hover {
+  color: darken($pc,15%);
+  .ion-android-arrow-forward.circle {
+    transform: translatex(10px);
+  }
+}
+
+body, .mce-content-body {
+  .button, .button:link, .button:visited, .button[data-mce-selected]{
+    border-radius:0;
+    text-transform: uppercase;
+    font-size: .9em;
+    font-weight: 400;
+    letter-spacing: .06em;
+    padding: 10px 28px;
+    height: auto;
+    border-radius: 30px;
+    cursor: pointer;
+        white-space: normal;
+      &.is-primary {
+        background-color: $sc;
+        border: 1px solid $sc;
+        color: #fff;
+        &:hover {
+          background-color: darken($sc,8%);
+          border-color: darken($sc,8%);
+        }
+      }
+      &.is-secondary {
+        background-color: $pc;
+        border: 1px solid $pc;
+        color: #fff;
+        &:hover {
+          background-color: darken($pc,8%);
+          border-color: darken($pc,8%);
+        }
+      }
+      &.inverted {
+        background-color: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+        &:hover {
+          background-color: #fff;
+          border: 1px solid #fff;
+          color: $pc;
+        }
+      }
+      &.fullwidth {
+        width: 100%;
+      }
+  }
+}
+
+.imageUpload {
+  button.btn.ninja-forms-field{
+    border-radius:0;
+    text-transform: uppercase;
+    font-size: .9em;
+    font-weight: 400;
+    letter-spacing: .06em;
+    padding: 10px 28px;
+    height: auto;
+    border-radius: 30px;
+    cursor: pointer;
+    padding-left: 60px;
+    .uploadIcon {
+      width: 30px;
+      height: 90%;
+      left: 18px;
+      top: 7%;
+      background-image: url(../img/photoUpload.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      display: inline-block;
+    }
+  }
+}
+
+
+
+
+
+.alignleft {
+  @media screen and (min-width: 768px) {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    max-width: 50%;
+  }
+}
+.aligncenter {
+  margin: 30px auto 40px;
+  display: block;
+}
+.alignright {
+  @media screen and (min-width: 768px) {
+    float: right;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    max-width: 50%;
+  }
+}

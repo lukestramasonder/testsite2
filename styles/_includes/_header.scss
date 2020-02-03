@@ -1,0 +1,700 @@
+
+/* ==========================================================================
+   header Styling
+   ========================================================================== */
+
+header.header {
+	.navWrap {
+		&.noPad {
+			padding-bottom: 0;
+		}
+	}
+    .navFloat {
+	    width: 100%;
+	    z-index: 9;
+    }
+}
+
+body.menuOpen {
+	overflow: hidden;
+}
+
+
+
+/* ==========================================================================
+   Pre Header
+   ========================================================================== */
+
+.preHead {
+	background-color:#fff;
+	padding: 5px 10px;
+	font-size: .8em;
+		p {
+			margin: 0;
+		}
+		
+}
+
+.wrapper {
+	overflow: hidden;
+	padding-top: 75px;
+	@include tiny {
+		padding-top: 60px;
+	}
+	@include tablet {
+		padding-top: 90px;
+	}
+}
+
+
+
+/* ==========================================================================
+   Sticky Nav
+   ========================================================================== */
+
+
+header.header {
+    .navWrap {
+    	position: fixed;
+      	top: 0;
+	    width: 100%;
+	    z-index: 5;
+		transition: transform 0.4s ease-in-out; 
+
+			.headerNav {
+				background-color: #fff;
+				height: 75px;
+				transition: height 0.4s ease-in-out, background-color 0.4s ease-in-out;
+				@include tiny {
+					height: 60px;
+				}
+				@include tablet {
+					height: 90px;
+				}
+			}
+
+      &.slideUp {
+      	box-shadow: 0 0 7px rgba(0,0,0,.1);
+
+      	.headerNav {
+      		height: 50px;
+      		background-color: #fff;
+
+					@include tiny {
+						height: 50px;
+					}
+					@include tablet {
+						height: 70px;
+					}
+
+      	}
+      }
+
+      &.off-canvas {
+      	transform: translateY(-90px);
+      }
+
+    }
+
+}
+
+
+
+/* ==========================================================================
+   Main Navigation
+   ========================================================================== */
+header.header {
+	
+	section.pageHead {
+
+		position: relative;
+    	background: #fff;
+		padding-top: 180px;
+	    padding-bottom: 100px;
+	    background-color: $tc;
+
+		.headerBg {
+		    position: absolute;
+		    background-position: center;
+		    background-size: cover;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		}
+
+		&.hidden {
+			display: none;
+		}
+
+		.contentWrap {
+		    width: 100%;
+
+		    @include tablet {
+		    	position: relative;
+		    	width: 90%;
+		    }
+		    @include desktop {
+		    	width: 60%;
+		    }
+
+		    * {
+		    	position: relative;
+		    	z-index: 1;
+		    }
+
+		    .headIntro {
+			    font-size: 2.1em;
+					@include tablet {
+			    	font-size: 2.3em;
+			    }
+			    @include desktop {
+			    	font-size: 2.5em;
+			    }
+			    font-family: $font1;
+			    color: $pc;
+			    line-height: 1.1em;
+			    em {
+						font-style: normal;
+						opacity: .5;
+						color:lighten($pc,5%);
+			    }
+			}
+
+			.headIcon {
+				width: 20%;
+				max-width: 130px;
+				margin: -6% 0 10px;
+				@include fullhd {
+			    	margin: 0 0 10px;
+			    }
+			}
+
+
+		}
+		.headerImage {
+			text-align: center;
+			@include tablet {
+				text-align: right;
+			}
+		}
+
+
+		h1 {
+			margin-bottom: 10px;
+			color: #fff;
+		}
+
+		.backLink {
+			svg.icon {
+				vertical-align: middle;
+			    * {
+			    	fill: #fff;
+			    }
+			}
+		}
+
+
+		.breadcrumb {	
+			li {
+				text-transform: uppercase;
+				letter-spacing: .02em;
+				color: #fff;
+				a {
+					color: #fff;
+				}
+				&.is-active {
+					font-weight: 400;
+					a {
+						color: #fff;
+					}
+				}
+			}
+		}
+
+	}
+
+}
+
+
+
+
+.headerNav {
+	height: 100%;
+	box-shadow:none;
+
+	.container {
+		height: 100%;
+		max-width: none;
+		position: relative;
+		width: 100%;
+	    box-sizing: border-box;
+	    padding: 0 20px;
+	    display: flex;
+		justify-content: flex-end;
+		@include desktop {
+			width: 99%;
+		}
+		.logo {
+			height: 100%;
+			display: inline-block;
+			width: 260px;
+			z-index: 4;
+	    	position: relative;
+	    	transition: transform 0.4s ease-in-out 0s;
+	    	margin-right: auto;
+			@include touch {
+				width: 210px;
+			}
+
+			#logo-container {
+				height: 100%;
+				border:0 none;
+				display: flex;
+				align-items: center;
+				span.logoWrap {
+				  width: 100%;
+				  height: 80%;
+				  text-align: left;
+					display: inline-block;
+					img {
+						float: left;
+						display: inline-block;
+						max-width: none;
+						height: 100%;
+						border:0 none;
+						&.light {
+							    transform: translateY(-100%);
+						}
+					}					
+				}
+
+			}
+		}
+	}
+
+
+	
+
+	.mobileWrap{
+	    height: 0;
+	    position: absolute;
+	    display: inline-block;
+	    float: right;
+	    top: 100%;
+	    background: $tc;
+	    width: 100%;
+	    right: 0;
+		top: 0;			
+		transition: height .3s ease-in-out, opacity .3s ease-in-out;
+		opacity: 0;
+
+
+		@include desktop {
+			opacity: 1!important;
+			height: 100%!important;
+			position: relative;
+			overflow: visible;
+			top: auto;
+			background: transparent;
+			text-align: right;
+			right: auto;
+
+		}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			.menuSocial {
+				background-color: $sc;
+			    padding: 20px;
+			    box-sizing: border-box;
+		    	@include tablet {
+		    		padding: 30px 40px;
+		    	}
+			}
+	}
+
+
+
+	&.openNav {
+
+			.container {
+				.logo {
+					#logo-container {
+						span.logoWrap {
+							img {
+								&.light {
+									display: block!important;
+								}
+								&.dark {
+									  opacity: 0!important;
+								}
+							}				
+						}
+					}
+					@include touch {
+						transform: translateY(20px);
+					}
+					@include tiny {
+						transform: translateY(10px);
+					}
+				}
+
+				.nav-activator{
+					.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+						background-color: #fff!important;
+					}
+
+					@include touch {
+						transform: translateY(20px);
+					}
+					@include tiny {
+						transform: translateY(10px);
+					}
+				}
+				.mobileWrap{
+					height: 100vh;
+					opacity: 1;
+
+				}
+			}
+
+	}
+
+
+
+
+
+
+
+	.mainNav {
+	    position: relative;
+	    height: auto;
+	    display: inline-block;
+	    width: 100%;
+	    box-sizing: border-box;
+	    margin-bottom: 0;
+	    top: 100px;
+		text-align: left;
+		position: absolute;
+		top: 80px;
+		bottom: 111px;
+		overflow: scroll;
+		padding: 0 20px;
+	    @include tiny {
+	    	top: 80px;
+	    }
+	    @include touch {
+	    	top: 120px;
+	    }
+    	@include desktop {
+			position: relative;
+			top: auto;
+			bottom: auto;
+    		height: 100%;
+    		width: auto;
+			padding: 0;
+			overflow: visible;
+    	}
+
+
+    	//first list items only
+    	&>li {
+    		@include desktop {
+				&:hover {
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						width: 100%;
+						left: 0;
+						height: 4px;
+						background-color: $pc;
+					}
+				}
+			  &.current_page_item {
+			    &::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						width: 100%;
+						left: 0;
+						height: 4px;
+						background-color: lighten($pc,10%);
+					}
+			  }
+			}
+    	}
+
+
+    	//All List Items
+	    li {
+	    	position: relative;
+		    display: inline-block;
+		    width: 100%;
+			vertical-align: top;
+			border-top: 1px solid rgba(255,255,255,.1);
+		    &.menu-item-has-children > a > svg {
+		    	display: none;
+		    }
+
+	    	@include desktop {
+	    		height: 100%;
+				width: auto;
+				border: 0 none;
+		    	&.menu-item-has-children > a > svg {
+	    		    vertical-align: middle;
+	    		    display: inline-block;
+	    		    * {
+	    		    	fill: $textColor;
+	    		    }
+					}
+	    	}
+	    	&.current-menu-item {
+	    		&>a {
+	    			color: $textColor;
+	    			font-weight: bold;
+	    			@include desktop {
+	    				color: $sc;
+	    				& > svg {
+	    					* {
+	    						fill: $sc;
+	    					}
+	    				}
+	    			}
+	    		}
+	    	}
+
+	    	a {
+	    		height: 100%;
+				padding: 20px 27px;
+			    display: inline-block;
+			    width: 100%;
+			    -webkit-box-sizing: border-box;
+			    box-sizing: border-box;
+
+
+			    @include tiny {
+			    	padding: 20px 22px;
+			    }
+
+			    @include tablet {
+			    	padding: 20px 32px;
+			    }
+
+	    		@include desktop {
+	    			padding: 0 10px;
+	    			font-size: 1em;
+	    		}
+	    		@include widescreen {
+	    			padding: 0 20px;
+	    			font-size: 1em;
+	    		}
+
+	    		&:hover {
+	    			@include desktop {
+		    			text-decoration: none;
+	    			}
+	    		}
+	    		&::before {
+				    content: " ";
+				    height: 100%;
+				    display: inline-block;
+				    vertical-align: middle;
+				}
+	    	}
+
+			.sub-toggle {
+			    position: absolute;
+			    top: 0;
+			    right: 0;
+			    height: 65px;
+			    width: 50px;
+			    font-size: .8em;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    &>svg {
+				    transition: transform .3s;
+				    * {
+				    	fill: #fff;
+				    }
+			    }
+			    &.toggled {
+			    	&>svg {
+			    		transform: rotate(180deg);
+			    	}
+			    }
+			    @include desktop {
+	    			display: none;
+	    		}
+
+			}
+
+
+	    }
+
+
+	    // Dropdowns
+
+	    .sub-menu-wrap {
+	    	height: 0;
+	    	overflow: hidden;
+		    float: left;
+		    width: 100%;
+		    padding-left: 12px;
+
+			.sub-toggle {
+			    height: 40px;
+			    &::after {
+			    	top: 50%;
+			    }
+			}
+
+	    	.sub-menu {
+	    		display: inline-block;
+	    		width: 100%;
+	    		padding: 0;
+	    		margin-bottom: 20px;
+	    	}
+
+	    	li {
+	    		a {
+					@include desktop {
+						padding: 10px 20px;
+					}
+
+		    		&:hover {
+		    			color: #fff;
+		    			@include desktop {
+		    				background-color: lighten($pc,10%);
+			    			color: #fff;
+			    			text-decoration: none;
+		    			}
+		    		}
+	    		}
+	    	}
+	    }
+
+
+	    @include desktop {
+			.sub-menu-wrap {
+				display: inline-block;
+				height: auto!important;
+				background-color: $pc;
+				position: absolute;
+				top: 100%;
+				visibility: hidden; /* hides sub-menu */
+				opacity: 0;
+				overflow: visible;
+				transform: translateY(2em);
+				z-index: 1;
+				transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+				box-shadow: 1px 1px 6px rgba(0,0,0,.1);
+				left: 0;
+				width: 230px;
+				float: none;
+				padding-left: 0;
+
+				.sub-menu {
+					margin-bottom: 0;
+				}
+
+				&.flipped {
+					left: auto;
+					right: 0;
+				}
+
+			    li {
+					width: 100%;
+					display: inline-block;
+
+
+			    	&.current-menu-item {
+			    		&>a {
+			    			@include desktop {
+			    				background-color: rgba(0,0,0,.05);
+			    			}
+			    		}
+			    	}
+
+			    	&.menu-item-has-children {
+			    		position: relative;
+				    	&> a {
+								&>svg {
+									display: inline-block;
+									float: right;
+									transform: rotate(-90deg) translateY(8px);
+									* {
+										fill: #fff;
+									}
+									@include touch {
+										display: none;
+									}
+								}
+				    	}
+					}
+
+					.sub-menu-wrap {
+						left: 100%;
+						top: 0;
+
+						&.flipped {
+							left: auto;
+							right: 100%;
+						}
+					}
+
+					a {
+						padding: 15px 20px;
+						color: #fff;
+						font-size: .9em;
+					}
+
+			    }
+
+			}
+
+			li:hover > .sub-menu-wrap{
+			  visibility: visible; /* shows sub-menu */
+			  opacity: 1;
+			  z-index: 1;
+			  transform: translateY(0%);
+			  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+			}
+		}
+	}
+
+}
+
+
+
+
+
+
+/*------------------------------------*\
+    Mobile Navigation
+\*------------------------------------*/
+.nav-activator {
+    display: inline-block;
+    float: right;
+    height: 100%;
+    position: relative;
+    z-index: 3;
+    transition: transform 0.4s ease-in-out 0s;
+
+    .hamburger {
+    	outline: none;
+    }
+}
+
+
+@include desktop {
+	.nav-activator {
+	    display: none;
+	}
+}
+
+
