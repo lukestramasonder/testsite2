@@ -217,6 +217,7 @@
 							} elseif(is_single()){ ?>
 
 									<p class="backLink">
+									<!-- If the link below doesn't work, make sure you are setting a page to be the default posts -->
 										<a href="<?php echo get_the_permalink( get_option( 'page_for_posts' ) ); ?>">
 								        	<svg class="icon leftArrow">
 												<use xlink:href="#icon-keyboard_arrow_right" />
@@ -259,7 +260,7 @@
 									if(get_field('header_title_replace') != ""){
 										$headTitle = get_field('header_title_replace');
 									} else {
-										$headTitle = get_the_title();
+										$headTitle = single_post_title('', false);
 									}
 
 									the_breadcrumb();
