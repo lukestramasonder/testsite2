@@ -217,7 +217,7 @@
 							} elseif(is_single()){ ?>
 
 									<p class="backLink">
-										<a href="<?php echo get_the_permalink(67); ?>">
+										<a href="<?php echo get_the_permalink( get_option( 'page_for_posts' ) ); ?>">
 								        	<svg class="icon leftArrow">
 												<use xlink:href="#icon-keyboard_arrow_right" />
 											</svg>
