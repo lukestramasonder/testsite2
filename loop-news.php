@@ -19,9 +19,9 @@
 
 					<?php  
 
-							$cat_id = get_queried_object_id();
-							$cat_name = get_cat_name($cat_id);
-							$newsTypes = get_terms('category');
+					$cat_id = get_queried_object_id();
+					$cat_name = get_cat_name($cat_id);
+					$newsTypes = get_terms('category');
 
 			        foreach($newsTypes as $type){
 			          $name = $type->name;
@@ -42,15 +42,29 @@
 		  </div>
 		</div>
 		<hr>
-		<div class="columns is-multiline">
+		<div class="columns is-multiline newsFeed">
 			<?php
 			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-			$args = array(
-				'posts_per_page' => 12,
-				'post_type' => 'post',
-				'paged' => $paged
-			);
+			$cat_id = get_queried_object_id();
+			$cat_name = get_cat_name($cat_id);
+			if(is_category()){
+				$args = array(
+					'posts_per_page' => 12,
+					'post_type' => 'post',
+					'cat' => $cat_id,
+					'paged' => $paged
+				);
+			} else {
+				$args = array(
+					'posts_per_page' => 12,
+					'post_type' => 'post',
+					'paged' => $paged
+				);
+			}
+
+
+
 
 			$custom_query = new WP_Query( $args );
 
@@ -81,13 +95,12 @@
 
 
 				if ( has_post_thumbnail() ) {
-					$thumb_id = get_post_thumbnail_id();
-					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'postcard', true);
-					$thumb_url = $thumb_url_array[0];
-					$thumb = "<a href='".get_the_permalink()."'><img src='".$thumb_url."' class='newsImage'></a>";
+					$thumb = get_the_post_thumbnail($post_id,'postcard');
+					$thumb = apply_filters( 'bj_lazy_load_html', $thumb );
 				} else {
 					$thumb = "";
 				}	
+
 
 				?>
 
@@ -96,20 +109,26 @@
 
 				<article class="column is-half-tablet is-one-third-desktop">
 
-					<?php echo $thumb; ?>
+					<div class="postWrap">
+						<?php 
+							if($thumb != '') {
+								echo "<a href='".get_the_permalink()."'>$thumb</a>";
+							}
+						?>
 
-					<div class='newsDesc'>
-						<p class='postedIn'>Posted: <?php echo get_the_time('M j, Y'); ?> in <?php echo $termList; ?></p>
-						<h3><a href='<?php echo get_the_permalink(); ?>'><?php echo get_the_title(); ?></a></h3>
-						<p><?php echo $copy ?>... </p>
-						<div class="readMore">
-							<a href='<?php echo get_the_permalink(); ?>' class="readLink">Read More »</a>
+						<div class='newsDesc'>
+							<h3><a href='<?php echo get_the_permalink(); ?>'><?php echo get_the_title(); ?></a></h3>
+							<p class='postedIn'>Posted: <?php echo get_the_time('M j, Y'); ?> in <?php echo $termList; ?></p>
+							<p><?php echo $copy ?>... </p>
+							<div class="readMore">
+								<a href='<?php echo get_the_permalink(); ?>' class="readLink">Read More »</a>
+							</div>
 						</div>
 					</div>
 
 				</article>  
 
-			<?php endwhile; ?>	
+			<?php endwhile; wp_reset_query();?>	
 
 		</div>
 

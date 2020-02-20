@@ -91,7 +91,6 @@
 									</div>
 
 
-
 							
 					                <div class="mobileWrap">
 
@@ -121,6 +120,20 @@
 
 				                	</div>
 
+	 									<?php if ( has_nav_menu( 'secondary' ) ) { ?>
+
+										<?php
+											$navTwo = array(
+												'theme_location' => 'secondary',
+												'fallback_cb' => 'wp_page_menu',
+												'items_wrap' => '<ul class="mainNav secondary" id="%1$s" class="%2$s">%3$s</ul>',
+												'walker' => new WPSE_78121_Sublevel_Walker); 	
+												wp_nav_menu($navTwo);
+										?>
+
+
+										<?php } ?> 
+
 									<div class="searchIcon">
 										<a href="#" class="search-act">
 												<svg class="icon searchIcon">
@@ -132,17 +145,7 @@
 										</a>
 									</div>
 
-	 									<?php if ( has_nav_menu( 'cart' ) ) { ?>
-											<div class="bookMenu">
-												<?php
-													wp_nav_menu( array(
-													    'menu'           => 'Book', // Do not fall back to first non-empty menu.
-													    'theme_location' => '__no_such_location',
-													    'fallback_cb'    => false // Do not fall back to wp_page_menu()
-													) );
-												?>
-											</div>
-										<?php } ?> 
+
 									<div class="nav-activator">
 										<button class="hamburger hamburger--spin" type="button">
 										  <span class="hamburger-box">

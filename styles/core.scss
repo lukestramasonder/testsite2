@@ -69,17 +69,38 @@ hr {
 }
 
 
-.lazyload,
-.lazyloading {
+
+.lazy {
 	opacity: 0;
 	transition: opacity .7s ease-in-out .2s;
 }
 
 
-img.lazyloaded {
+.lazy-loaded {
 	transition: opacity .7s ease-in-out .2s;
 	opacity: 1;
 }
+
+
+.objectFit {
+
+	&.compat-object-fit {
+	   background-size: cover;
+	   background-position: center center;
+
+	   img {
+	   	opacity: 0;
+	   }
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+	}
+}
+
 
 
 .is-type-video {
@@ -504,20 +525,20 @@ body.single-post {
     	align-items: center;
 		}
 
-    padding: 40px 40px;
-    position: relative;
-    h2, h3, h4, h5 {
-    	font-size: 2.3em;
-    	line-height: 1.2em;
-    }
-    p {
-    	font-size: 1.3em;
-    }
+	    padding: 40px 40px;
+	    position: relative;
+	    h2, h3, h4, h5 {
+	    	font-size: 2.3em;
+	    	line-height: 1.2em;
+	    }
+	    p {
+	    	font-size: 1.3em;
+	    }
 
 
-    .mc-field-group {
-    	text-align: right;
-    	input {
+	    .mc-field-group {
+	    	text-align: right;
+	    	input {
 				&::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 				  color: $pc;
 				  opacity: .6;
@@ -532,26 +553,26 @@ body.single-post {
 				  color: $pc;
 				  opacity: .6;
 				}
-    	}
-    	input[type=text] {
-    		width: 100%;
-		    background-color: lighten($sc,13%);
-		    box-shadow: none;
-		    border: 0 none;
-		    border-radius: 0;
-		    color: $pc;
-    	}
-    	input[type=email] {
-    		width: 100%;
-		    background-color: lighten($sc,13%);
-		    box-shadow: none;
-		    border: 0 none;
-		    border-radius: 0;
-		    color: $pc;
-    	}
+	    	}
+	    	input[type=text] {
+	    		width: 100%;
+			    background-color: rgba(0,0,0,.05);
+			    box-shadow: none;
+			    border: 0 none;
+			    border-radius: 0;
+			    color: $pc;
+	    	}
+	    	input[type=email] {
+	    		width: 100%;
+			    background-color: rgba(0,0,0,.05);
+			    box-shadow: none;
+			    border: 0 none;
+			    border-radius: 0;
+			    color: $pc;
+	    	}
 
-    }
-  }
+	    }
+	}
 }
 
 
@@ -559,18 +580,28 @@ body.single-post {
 
 .ctaContact {
 	width: 100%;
-	background-color: darken($tc,5%);
+	background-color: $pc;
 	position: relative;
 	color: #fff;
+
+	.ctaImage {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    img {
+	    	opacity: .1;
+	    }
+	}
+
 	.container {
-		.ctaImage {
-			img {
-				width: 100%;
-				max-width: 570px;
-				border-radius: 47% 53% 38% 62% / 48% 58% 42% 52% ;
-			}
+		h1, h2, h3, h4, h5, h6 {
+			color: #fff;
 		}
 		.ctaText {
+
+		}
+		.ctaAction {
 
 		}
 	}
@@ -742,30 +773,44 @@ footer.footer {
 
 
 
+
 /*---------------------------------------*\
     News Style
 \*---------------------------------------*/
 
-.page-template-page-news {
+.page-template-page-news, body.category, body.home {
 
-	img.newsImage {
-	    width: 100%;
-	}
-
-	.newsDesc {
-		
-		h3 {
-			font-weight: normal;
-			    font-size: 1.6em;
+	.newsFeed {
+		img.newsImage {
+		    width: 100%;
 		}
-		.postedIn {
-			color: #c9c9c9;
+
+		.newsDesc {
+			padding: 20px 0;
+			h3 {
+				font-weight: normal;
+				font-size: 1.6em;
+			}
+			.postedIn {
+				font-size: .8em;
+			}
+		}
+
+		article.column {
+			margin-bottom: 30px;
+
+			.postWrap {
+			    height: 100%;
+			    position: relative;
+
+
+			    .readMore {
+
+			    }
+			}
 		}
 	}
 
-	article.column {
-		margin-bottom: 40px;
-	}
 }
 
 

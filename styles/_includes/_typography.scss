@@ -69,6 +69,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   text-transform: none;
   line-height: 1.2em;
   font-weight: bold;
+  margin: 1rem 0;
   a, a:link, a:visited{
     color: $sc;
     &:hover {
@@ -186,15 +187,13 @@ a:hover {
 body, .mce-content-body {
   .button, .button:link, .button:visited, .button[data-mce-selected]{
     border-radius:0;
-    text-transform: uppercase;
     font-size: .9em;
     font-weight: 400;
-    letter-spacing: .06em;
+    color: $pc;
     padding: 10px 28px;
     height: auto;
-    border-radius: 30px;
     cursor: pointer;
-        white-space: normal;
+    white-space: normal;
       &.is-primary {
         background-color: $sc;
         border: 1px solid $sc;

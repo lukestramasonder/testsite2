@@ -77,7 +77,9 @@ section#homeSlider {
         align-items: center;
         width: 100%;
         opacity: 0;
-
+        a {
+          color: $pc;
+        }
         &.left-align {
           left: 0;
           text-align: left;

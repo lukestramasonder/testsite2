@@ -122,7 +122,7 @@ function register_html5_menu()
     register_nav_menus(array( // Using array to specify more menus if needed
         'header-menu' => __('Header Menu', 'html5blank'), // Main Navigation
         'sidebar-menu' => __('Sidebar Menu', 'html5blank'), // Sidebar Navigation
-        'cart' => __('Cart', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
+        'secondary' => __('Secondary', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
     ));
 }
 
@@ -673,13 +673,13 @@ class MyTheme_Customize {
 
      //3. Finally, we define the control itself (which links a setting to a section and renders the HTML controls)...
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_logo', array(
-            'label'    => __( 'Dark Logo', $theme_name ),
+            'label'    => __( 'PNG Logo', $theme_name ),
             'section'  => 'themeslug_logo_section',
             'settings' => 'themeslug_logo',
         ) ) );
 
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_logo2', array(
-            'label'    => __( 'Light Logo', $theme_name ),
+            'label'    => __( 'SVG Logo', $theme_name ),
             'section'  => 'themeslug_logo_section',
             'settings' => 'themeslug_logo2',
         ) ) );
@@ -953,6 +953,13 @@ function phone_number_format($number) {
 }
 
 
+
+/*------------------------------------*\
+    Page Exerpts
+\*------------------------------------*/
+add_post_type_support( 'page', 'excerpt' );
+
+
 /*------------------------------------*\
     Fancy Numbered Pagination
 \*------------------------------------*/
@@ -1074,106 +1081,6 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 add_editor_style( 'styles/editor.css' );
 
 
-
-
-/*------------------------------------*\
-    Lazy Filters
-\*------------------------------------*/
-add_filter( 'wp_get_attachment_image_attributes', 'gs_change_attachment_image_markup', 10, 2 );
-/**
-* Change src and srcset to data-src and data-srcset, and add class 'lazyload'
- * @param array   $atts       Gallery image tag attributes.
- * @param WP_Post $attachment WP_Post object for the attachment.
- * @return array (maybe) filtered gallery image tag attributes.
-*/
-function gs_change_attachment_image_markup($atts, $attachment){
-
-if ( $tiny = wp_get_attachment_image_src( $attachment->ID, 'tiny' ) ) {
-        if ( !empty( $tiny[0] ) ) {
-            $tinyThumb = $tiny[0];
-        } else {
-            $tinyThumb = '';
-        }
-}
-
-if (isset($atts['src'])) {
-   $atts['data-src'] = $atts['src'];
-   $atts['src'] = $tinyThumb; //could add default small image or a base64 encoded small image here
-   }
-if (isset($atts['srcset'])) {
-   $atts['data-srcset'] = $atts['srcset'];
-   $atts['srcset'] = '';
-  }
-$atts['class'] .= ' lazyload';
-return $atts;
-}
-
-
-
-
-
-add_filter('the_content', 'gs_add_img_lazy_markup', 15);  // hook into filter and use priority 15 to make sure it is run after the srcset and sizes attributes have been added.
-
-/**
- *
- * Modified from: Sunyatasattva
- * https://wordpress.stackexchange.com/questions/81522/change-html-structure-of-all-img-tags-in-wordpress
- * @param $the_content
- *
- * @return string
- *
- * Initial use of code gave warning: DOMDocument::loadHTML(): Unexpected end tag : p
- * Due to invalid HTML
- *
- * https://stackoverflow.com/questions/11819603/dom-loadhtml-doesnt-work-properly-on-a-server
- *
- * libxml_use_internal_errors(true);
- */
-
-
-function gs_add_img_lazy_markup($the_content) {
-
-    libxml_use_internal_errors(true);
-    $post = new DOMDocument();
-    $post->loadHTML('<?xml encoding="UTF-8">' . $the_content);
-    $imgs = $post->getElementsByTagName('img');
-
-    // Iterate each img tag
-    foreach( $imgs as $img ) {
-
-        if( $img->hasAttribute('data-src') ) continue;
-
-        if( $img->parentNode->tagName == 'noscript' ) continue;
-
-        $clone = $img->cloneNode();
-
-        $src = $img->getAttribute('src');
-        $img->removeAttribute('src');
-        $img->setAttribute('data-src', $src);
-
-        $srcset = $img->getAttribute('srcset');
-        $img->removeAttribute('srcset');
-        if( ! empty($srcset)) {
-            $img->setAttribute('data-srcset', $srcset);
-        }
-
-        $imgClass = $img->getAttribute('class');
-        $img->setAttribute('class', $imgClass . ' lazyload');
-
-        $no_script = $post->createElement('noscript');
-        $no_script->appendChild($clone);
-        $img->parentNode->insertBefore($no_script, $img);
-    };
-
-    return $post->saveHTML();
-}
-
-
-
-function image_tag_class($class, $id, $align, $size) {
-    return $class . ' lazyload';
-  }
-add_filter('get_image_tag_class', 'image_tag_class', 10, 4);
 
 
 /*------------------------------------*\

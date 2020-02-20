@@ -1,6 +1,5 @@
 
 //@prepros-prepend lib/modernizr-2.7.1.min.js
-//@prepros-prepend plugins/lazysizes.min.js
 //@prepros-prepend plugins/jquery.bxslider.js
 
 
